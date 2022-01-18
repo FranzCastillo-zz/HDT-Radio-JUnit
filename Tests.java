@@ -4,41 +4,58 @@ import org.junit.Test;
 
 
 public class Tests {
-    public Tests(){
-    }
-    
     @Test
-    private void testPrenderRadio(){
+    public void testPrenderRadio(){
+        /*
+            Probar Prender cuando
+                esta prendido
+                esta apagado
+        */
         //assertEquals(expected, actual);
     }
 
     @Test
-    private void testApagarRadio(){
+    public void testApagarRadio(){
+        /*
+            Probar apagar cuando
+                esta prendido
+                esta apagado
+        */
+    }
+
+    @Test
+    public void testCambiarAMaFM(){
 
     }
 
     @Test
-    private void testCambiarAMaFM(){
-
-    }
-
-    @Test
-    private void testCambiarFMaAM(){
+    public void testCambiarFMaAM(){
         
     }
 
     @Test
-    private void testAvanzarEmisoras(){
+    public void testAvanzarEmisoras(){
+        /* 
+            La prueba tiene que ser para AM y FM
+            Probar avanzar normal
+            Probar avanzar cuando esta en el limite superior
+        */
+        Radio radio = new Radio();
+        int firstFreqAM = radio.getActualFreqAM();
         
     }
-
     @Test
-    private void testGuardarEmisora(){
-        
+    public void testGuardarEmisoraAM(){
+        Radio radio = new Radio();
+        int testFreq = radio.getActualFreqAM();
+        radio.saveInAM(1, testFreq);
+        assertEquals(testFreq, radio.getSavedFreqAM(1));
     }
-
     @Test
-    private void testSeleccionarEmisoraGuardada(){
-        
+    public void testGuardarEmisoraFM(){
+        Radio radio = new Radio();
+        double testFreq = radio.getActualFreqFM();
+        radio.saveInFM(1, testFreq);
+        assertEquals(testFreq, radio.getSavedFreqFM(1));
     }
 }

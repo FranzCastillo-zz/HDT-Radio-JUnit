@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Radio implements IRadio{
     private boolean status;
     private int mode;
@@ -9,7 +7,6 @@ public class Radio implements IRadio{
     private double actualFreqFM;
     private static int jumpAM = 10;
     private static double jumpFM = 0.2;
-    private Scanner scan;
     
     public Radio(){
         status = false; //TURNED OFF
@@ -18,71 +15,74 @@ public class Radio implements IRadio{
         freqsFM = new double[12];
         actualFreqAM = 1070;
         actualFreqFM = 97.9;
-        scan = new Scanner(System.in);
-    }
-    private void prnt(String texto){
-        System.out.println(texto);
     }
     @Override
     public boolean getStatus() {
-        // TODO Auto-generated method stub
-        return false;
+        return status;
     }
+
     @Override
     public void switchButton() {
         // TODO Auto-generated method stub
         
     }
+
     @Override
     public void changeMode() {
-        // TODO Auto-generated method stub
-        
+        if(getActualMode() == 0){
+            mode = 1;
+        }else{
+            mode = 0;
+        }
     }
+
     @Override
     public int getActualMode() {
-        // TODO Auto-generated method stub
-        return 0;
+        return mode;
     }
+
     @Override
     public void saveInAM(int slot, int freq) {
-        // TODO Auto-generated method stub
-        
+        freqsAM[slot] = freq;
     }
+
     @Override
     public int getSavedFreqAM(int slot) {
-        // TODO Auto-generated method stub
-        return 0;
+        return freqsAM[slot];
     }
+
     @Override
     public void saveInFM(int slot, double freq) {
-        // TODO Auto-generated method stub
-        
+        freqsFM[slot] = freq;
     }
+
     @Override
     public double getSavedFreqFM(int slot) {
-        // TODO Auto-generated method stub
-        return 0;
+        return freqsFM[slot];
     }
+
     @Override
     public int getActualFreqAM() {
-        // TODO Auto-generated method stub
-        return 0;
+        return actualFreqAM;
     }
+
     @Override
     public double getActualFreqFM() {
-        // TODO Auto-generated method stub
-        return 0;
+        return actualFreqFM;
     }
+
     @Override
     public void moveForward() {
-        // TODO Auto-generated method stub
-        
+        actualFreqAM += jumpAM;
+        actualFreqFM += jumpFM;
     }
+
     @Override
     public void moveBackward() {
         // TODO Auto-generated method stub
         
     }
+    
     @Override
     public void seek() {
         // TODO Auto-generated method stub
