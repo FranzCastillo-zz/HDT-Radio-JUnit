@@ -1,5 +1,3 @@
-import javax.lang.model.util.ElementScanner14;
-
 public class RadioSimulator {
     private Radio radio;
     private Vista v;
@@ -35,14 +33,20 @@ public class RadioSimulator {
                         radio.moveBackward();
                     break;
                     case 4: // GUARDAR EMISORA
-                        int slot = v.askSlot();
+                        int savingSlot = v.askSavingSlot();
                         if(mode == 0){ // AM
-                            radio.saveInAM(slot, actualAM);
+                            radio.saveInAM(savingSlot, actualAM);
                         }else{
-                            radio.saveInFM(slot, actualFM);
+                            radio.saveInFM(savingSlot, actualFM);
                         }
                     break;
                     case 5: // SELECCIONAR EMISORA
+                        int playingSlot = v.askPlayingSlot();
+                        if(mode == 0){
+                            //radio.setActualFreqAM(radio.getSavedFreqAM(playingSlot));
+                        }else{
+                            //radio.setActualFreqFM(radio.getSavedFreqFM(playingSlot));
+                        }
                     break;
                     case 6: // SEEK
                         

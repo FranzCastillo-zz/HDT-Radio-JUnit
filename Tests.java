@@ -10,7 +10,6 @@ public class Tests {
                 esta prendido
                 esta apagado
         */
-        //assertEquals(expected, actual);
     }
 
     @Test
