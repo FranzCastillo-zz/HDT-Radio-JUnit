@@ -23,7 +23,11 @@ public class Radio implements IRadio{
 
     @Override
     public void switchButton() {
-        // TODO Auto-generated method stub
+        if (status) {
+        	status = false;
+        }else {
+        	status = true;
+        }
         
     }
 
