@@ -23,7 +23,13 @@ public class Radio implements IRadio{
 
     @Override
     public void switchButton() {
-        // TODO Auto-generated method stub
+        if (status) {
+        	status = false;
+        	System.out.println("La radio ahora esta apagada \n");
+        }else {
+        	System.out.println("La radio ahora esta encendida \n");
+        	status = true;
+        }
         
     }
 
