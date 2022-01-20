@@ -25,7 +25,9 @@ public class Main {
     		
 	    	while(radio.getStatus()) {	    		
 	    		turnedOnRadio(radio.getActualFreqFM(), radio.getActualFreqAM(), radio.getStatus());
-	    		turnedOnMenu();
+	    		if(turnedOnMenu().equals("e")) {
+	    			radio.switchButton();
+	    		}
 	    		
 	    	}
     	}
@@ -47,14 +49,14 @@ public class Main {
     					 "Boton 3 \t" + " Boton 7  \t" + "Boton 11 \n" +
     					 "Boton 4 \t" + " Boton 8  \t" + "Boton 12 \n" ;
     	
-    	String options = "pulse 'n' para la siguiente emisora o pulse 'p' para  la enterior \n"+
+    	String options = "\n pulse 'n' para la siguiente emisora o pulse 'p' para  la enterior \n"+
     					 "pulse 's' para iniciar o detener el seek \n" +
     					 "pulse 'e' para apagar la radio";  
     	
     	if(radio.getActualMode() == 0) {
-    		prnt(am +  buttons);    		
+    		prnt(am +  buttons + options);    		
     	}else {
-    		prnt(fm + buttons);
+    		prnt(fm + buttons + options);
     	}
     }
     

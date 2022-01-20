@@ -25,7 +25,9 @@ public class Radio implements IRadio{
     public void switchButton() {
         if (status) {
         	status = false;
+        	System.out.println("La radio ahora esta apagada \n");
         }else {
+        	System.out.println("La radio ahora esta encendida \n");
         	status = true;
         }
         
