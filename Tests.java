@@ -56,4 +56,27 @@ public class Tests {
         radio.saveInFM(1, testFreq);
         assertEquals(testFreq, radio.getSavedFreqFM(1), 0d);
     }
+    @Test
+    public void testReproducirEmisoraGuardadaAM(){
+        Radio radio = new Radio();
+        radio.changeMode();
+        int savedFreq = radio.getActualFreqAM();
+        radio.saveInAM(1, savedFreq);
+        radio.moveForward();
+        while(radio.getActualFreqAM() != radio.getSavedFreqAM(1)){
+            radio.moveForward();
+        }
+        assertEquals(savedFreq, radio.getActualFreqAM());
+    }
+    @Test
+    public void testReproducirEmisoraGuardadaFM(){
+        Radio radio = new Radio();
+        double savedFreq = radio.getActualFreqFM();
+        radio.saveInFM(1, savedFreq);
+        radio.moveForward();
+        while(radio.getActualFreqFM() != radio.getSavedFreqFM(1)){
+            radio.moveForward();
+        }
+        assertEquals(savedFreq, radio.getActualFreqFM(), 0.1);
+    }
 }
