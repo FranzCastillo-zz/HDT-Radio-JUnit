@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Radio implements IRadio{
     private boolean status;
     private int mode;
@@ -117,8 +119,14 @@ public class Radio implements IRadio{
     }
     
     @Override
-    public void seek() {
-        // TODO Auto-generated method stub
+    public void seek() { //Genera un numero random entre el rango de las frecuencias dependiendo el modo
+        Random rnd = new Random(); 
+        if(getActualMode() == 0) { //ES AM
+            actualFreqAM = (int) (530 + (1610 - 530) * rnd.nextDouble()); 
+        }
+        else { //ES FM
+            actualFreqFM = 87.9 + (107.9 - 87.9) * rnd.nextDouble();
+        }
         
     }
 }

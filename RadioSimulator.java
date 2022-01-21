@@ -63,7 +63,7 @@ public class RadioSimulator {
                         }
                     break;
                     case 6: // SEEK
-                        
+                        radio.seek();
                     break;
                     case 7:
                         radio.switchButton();
