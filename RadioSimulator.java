@@ -42,10 +42,24 @@ public class RadioSimulator {
                     break;
                     case 5: // SELECCIONAR EMISORA
                         int playingSlot = v.askPlayingSlot();
-                        if(mode == 0){
-                            //radio.setActualFreqAM(radio.getSavedFreqAM(playingSlot));
+                        if(mode == 0){ // AM
+                            int savedSlotAM = radio.getSavedFreqAM(playingSlot);
+                            if(savedSlotAM == 0){ // SI NO HAY GUARDADO NADA
+                                v.invalidOption();
+                            }else{
+                                while(radio.getActualFreqAM() != savedSlotAM){
+                                    radio.moveForward();
+                                }
+                            }
                         }else{
-                            //radio.setActualFreqFM(radio.getSavedFreqFM(playingSlot));
+                            double savedSlotFM = radio.getSavedFreqFM(playingSlot);
+                            if(savedSlotFM == 0){
+                                v.invalidOption();
+                            }else{
+                                while(radio.getActualFreqFM() != savedSlotFM){
+                                    radio.moveForward();
+                                }
+                            }
                         }
                     break;
                     case 6: // SEEK

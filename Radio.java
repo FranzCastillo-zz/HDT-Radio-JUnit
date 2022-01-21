@@ -6,7 +6,7 @@ public class Radio implements IRadio{
     private int actualFreqAM;
     private double actualFreqFM;
     private static int jumpAM = 10;
-    private static double jumpFM = 0.2;
+    private static double jumpFM = 0.2d;
     private static int[] limitsAM = {530, 1610};
     private static double[] limitsFM = {87.9, 107.9};
     
@@ -59,12 +59,12 @@ public class Radio implements IRadio{
 
     @Override
     public void saveInFM(int slot, double freq) {
-        freqsFM[slot] = freq;
+        freqsFM[slot] = Math.round(freq*10.0)/10.0;
     }
 
     @Override
     public double getSavedFreqFM(int slot) {
-        return freqsFM[slot];
+        return  Math.round(freqsFM[slot]*10.0)/10.0;
     }
 
     @Override
@@ -74,20 +74,20 @@ public class Radio implements IRadio{
 
     @Override
     public double getActualFreqFM() {
-        return actualFreqFM;
+        return Math.round(actualFreqFM*10.0)/10.0;
     }
 
     @Override
     public void moveForward() {
         if(getActualMode() == 0){ //ES AM
-            if (actualFreqAM == limitsAM[1]) { //FINAL DEL DIAL
+            if (actualFreqAM >= limitsAM[1]) { //FINAL DEL DIAL
                 actualFreqAM = limitsAM[0];
             }
             else {
                 actualFreqAM += jumpAM;
             }
         }else{ //ES FM
-            if (actualFreqFM == limitsFM[1]) { //FINAL DEL DIAL
+            if (actualFreqFM >= limitsFM[1]) { //FINAL DEL DIAL
                 actualFreqFM = limitsFM[0];
             }
             else {
@@ -99,14 +99,14 @@ public class Radio implements IRadio{
     @Override
     public void moveBackward() {
         if(getActualMode() == 0){ //ES AM
-            if (actualFreqAM == limitsAM[0]) { //INICIO DEL DIAL
+            if (actualFreqAM <= limitsAM[0]) { //INICIO DEL DIAL
                 actualFreqAM = limitsAM[1];
             }
             else {
                 actualFreqAM -= jumpAM;
             }
         }else{ //ES FM
-            if (actualFreqFM == limitsFM[0]) { //INICIO DEL DIAL
+            if (actualFreqFM <= limitsFM[0]) { //INICIO DEL DIAL
                 actualFreqFM = limitsFM[1];
             }
             else {

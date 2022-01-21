@@ -19,7 +19,7 @@ public class Vista {
     /**
      * Muestra en la consola que el usuario ha ingresado una opcion invalida
      */
-    private void invalidOption(){
+    public void invalidOption(){
         prnt("Ingrese una opcion valida.");
     }
 
