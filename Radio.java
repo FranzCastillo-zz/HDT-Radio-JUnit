@@ -16,7 +16,7 @@ public class Radio implements IRadio{
         freqsAM = new int[12];
         freqsFM = new double[12];
         actualFreqAM = 1070;
-        actualFreqFM = 97.9;
+        actualFreqFM = 87.9;
     }
     @Override
     public boolean getStatus() {
@@ -98,7 +98,21 @@ public class Radio implements IRadio{
 
     @Override
     public void moveBackward() {
-        // TODO Auto-generated method stub
+        if(getActualMode() == 0){ //ES AM
+            if (actualFreqAM == limitsAM[0]) { //INICIO DEL DIAL
+                actualFreqAM = limitsAM[1];
+            }
+            else {
+                actualFreqAM -= jumpAM;
+            }
+        }else{ //ES FM
+            if (actualFreqFM == limitsFM[0]) { //INICIO DEL DIAL
+                actualFreqFM = limitsFM[1];
+            }
+            else {
+                actualFreqFM -= jumpFM;
+            }
+        }
         
     }
     
