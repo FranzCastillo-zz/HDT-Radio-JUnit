@@ -7,6 +7,8 @@ public class Radio implements IRadio{
     private double actualFreqFM;
     private static int jumpAM = 10;
     private static double jumpFM = 0.2;
+    private static int[] limitsAM = {530, 1610};
+    private static double[] limitsFM = {87.9, 107.9};
     
     public Radio(){
         status = false; //TURNED OFF
@@ -77,8 +79,21 @@ public class Radio implements IRadio{
 
     @Override
     public void moveForward() {
-        actualFreqAM += jumpAM;
-        actualFreqFM += jumpFM;
+        if(getActualMode() == 0){ //ES AM
+            if (actualFreqAM == limitsAM[1]) { //FINAL DEL DIAL
+                actualFreqAM = limitsAM[0];
+            }
+            else {
+                actualFreqAM += jumpAM;
+            }
+        }else{ //ES FM
+            if (actualFreqFM == limitsFM[1]) { //FINAL DEL DIAL
+                actualFreqFM = limitsFM[0];
+            }
+            else {
+                actualFreqFM += jumpFM;
+            }
+        }
     }
 
     @Override
