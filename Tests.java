@@ -32,16 +32,23 @@ public class Tests {
     }
 
     @Test
-    public void testAvanzarEmisoras(){
-        /* 
-            La prueba tiene que ser para AM y FM
-            Probar avanzar normal
-            Probar avanzar cuando esta en el limite superior
-        */
+    public void testAvanzarEmisorasAM(){
         Radio radio = new Radio();
-        int firstFreqAM = radio.getActualFreqAM();
-        
+        int testFreq = radio.getActualFreqAM() + 10;
+        radio.changeMode(); //se cambia a AM
+        radio.moveForward();
+        assertEquals(testFreq, radio.getActualFreqAM());
     }
+
+    @Test
+    public void testAvanzarEmisorasFM(){
+        Radio radio = new Radio();
+        double testFreq = radio.getActualFreqFM() + 0.2;
+        testFreq = Math.round(testFreq*10.0)/10.0; //redondear
+        radio.moveForward();
+        assertEquals(testFreq, radio.getActualFreqFM(), 0d);
+    }
+
     @Test
     public void testGuardarEmisoraAM(){
         Radio radio = new Radio();
