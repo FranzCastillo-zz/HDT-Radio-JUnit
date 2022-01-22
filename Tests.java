@@ -61,6 +61,9 @@ public class Tests {
         Radio radio = new Radio();
         int testFreq = 530;
         radio.changeMode(); //se cambia a AM
+        while(radio.getActualFreqAM() != 1610){ //se llega al final del dial
+            radio.moveForward();
+        }
         radio.moveForward();
         assertEquals(testFreq, radio.getActualFreqAM());
     }
@@ -69,6 +72,9 @@ public class Tests {
     public void testFinalEmisorasFM(){
         Radio radio = new Radio();
         double testFreq = 87.9;
+        while(radio.getActualFreqFM() != 107.9){ //se llega al final del dial
+            radio.moveForward();
+        }
         radio.moveForward();
         assertEquals(testFreq, radio.getActualFreqFM(), 0d);
     }
