@@ -17,8 +17,8 @@ public class Radio implements IRadio{
         mode = 1; // FM MODE
         freqsAM = new int[12];
         freqsFM = new double[12];
-        actualFreqAM = 1070;
-        actualFreqFM = 87.9;
+        actualFreqAM = 1610;
+        actualFreqFM = 107.9;
     }
     @Override
     public boolean getStatus() {

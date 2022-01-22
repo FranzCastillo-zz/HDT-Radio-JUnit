@@ -50,6 +50,24 @@ public class Tests {
     }
 
     @Test
+    public void testFinalEmisorasAM(){
+        Radio radio = new Radio();
+        int testFreq = 530;
+        radio.changeMode(); //se cambia a AM
+        radio.moveForward();
+        assertEquals(testFreq, radio.getActualFreqAM());
+    }
+
+    @Test
+    public void testFinalEmisorasFM(){
+        Radio radio = new Radio();
+        double testFreq = 87.9;
+        radio.moveForward();
+        assertEquals(testFreq, radio.getActualFreqFM(), 0d);
+    }
+
+
+    @Test
     public void testGuardarEmisoraAM(){
         Radio radio = new Radio();
         int testFreq = radio.getActualFreqAM();
