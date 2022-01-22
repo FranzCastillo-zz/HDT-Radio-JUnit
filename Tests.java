@@ -5,20 +5,19 @@ import org.junit.Test;
 public class Tests {
     @Test
     public void testPrenderRadio(){
-        /*
-            Probar Prender cuando
-                esta prendido
-                esta apagado
-        */
+        Radio radio = new Radio();
+        boolean testStatus = true;
+        radio.switchButton();
+        assertEquals(testStatus, radio.getStatus());
     }
 
     @Test
     public void testApagarRadio(){
-        /*
-            Probar apagar cuando
-                esta prendido
-                esta apagado
-        */
+        Radio radio = new Radio();
+        radio.switchButton(); //Encender la radio
+        boolean testStatus = false;
+        radio.switchButton();
+        assertEquals(testStatus, radio.getStatus());
     }
 
     @Test
