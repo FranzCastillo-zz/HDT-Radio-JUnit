@@ -23,11 +23,19 @@ public class Tests {
 
     @Test
     public void testCambiarAMaFM(){
-
+        Radio radio = new Radio();
+        int testMode = 0;
+        radio.changeMode();
+        assertEquals(testMode, radio.getActualMode());
     }
 
     @Test
     public void testCambiarFMaAM(){
+        Radio radio = new Radio();
+        radio.changeMode(); //Cambiar a AM
+        int testMode = 1;
+        radio.changeMode();
+        assertEquals(testMode, radio.getActualMode());
         
     }
 
@@ -65,7 +73,6 @@ public class Tests {
         radio.moveForward();
         assertEquals(testFreq, radio.getActualFreqFM(), 0d);
     }
-
 
     @Test
     public void testGuardarEmisoraAM(){
