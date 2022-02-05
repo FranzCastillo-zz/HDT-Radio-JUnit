@@ -1,4 +1,4 @@
-public class RadioSimulator {
+	public class RadioSimulator {
     private Radio radio;
     private Vista v;
 
